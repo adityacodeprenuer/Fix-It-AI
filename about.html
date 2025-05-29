@@ -2,42 +2,73 @@
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About – FixCity AI</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Smooth fade-in animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+    }
+    /* Stagger animation delays */
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    /* Team card hover effect */
+    .team-card:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-tr from-indigo-50 to-sky-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+<body class="bg-gradient-to-tr from-indigo-50 to-sky-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white selection:bg-indigo-300 selection:text-indigo-900">
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 shadow px-6 py-4 backdrop-blur flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">FixCity AI</h1>
-    <nav class="space-x-4">
-      <a href="index.html" class="hover:underline">Home</a>
-      <a href="features.html" class="hover:underline">Features</a>
-      <a href="dashboard.html" class="hover:underline">Dashboard</a>
-      <a href="submit.html" class="hover:underline">Submit</a>
-      <a href="blog.html" class="hover:underline">Blog</a>
-      <a href="community.html" class="hover:underline">Community</a>
-      <a href="about.html" class="hover:underline font-semibold text-indigo-600 dark:text-indigo-400">About</a>
-      <a href="terms.html" class="hover:underline">Terms</a>
-      <a href="login.html" class="hover:underline">Login</a>
-      <a href="signup.html" class="hover:underline">Sign UP</a>
+  <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 shadow-md px-6 py-4 backdrop-blur flex justify-between items-center">
+    <h1 class="text-3xl font-extrabold text-indigo-600 dark:text-indigo-400 tracking-tight">FixCity AI</h1>
+    <nav class="space-x-6 text-gray-700 dark:text-gray-300 font-medium">
+      <a href="index.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Home</a>
+      <a href="features.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Features</a>
+      <a href="dashboard.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Dashboard</a>
+      <a href="submit.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Submit</a>
+      <a href="blog.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Blog</a>
+      <a href="community.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Community</a>
+      <a href="about.html" class="font-semibold text-indigo-700 dark:text-indigo-300 underline decoration-indigo-400 decoration-2 underline-offset-4">About</a>
+      <a href="terms.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Terms</a>
+      <a href="login.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Login</a>
+      <a href="signup.html" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition">Sign Up</a>
     </nav>
   </header>
 
   <!-- About Section -->
-  <main class="max-w-4xl mx-auto py-16 px-6">
-    <h2 class="text-4xl font-extrabold text-center text-indigo-700 dark:text-indigo-400 mb-6">About FixCity AI</h2>
-    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300 mb-6">
+  <main class="max-w-6xl mx-auto py-20 px-8 sm:px-16 lg:px-24">
+    <h2 class="text-5xl font-extrabold text-center text-indigo-700 dark:text-indigo-400 mb-12 tracking-wide fade-in-up" style="animation-delay: 0.1s;">About FixCity AI</h2>
+    <p class="max-w-3xl mx-auto text-xl leading-relaxed text-gray-700 dark:text-gray-300 mb-16 text-center fade-in-up" style="animation-delay: 0.3s;">
       FixCity AI is an advanced civic engagement platform designed to empower citizens and city officials to collaboratively track, report, and resolve infrastructure issues. Combining smart data visualization, real-time status tracking, and AI-powered chatbot assistance, FixCity AI creates a transparent, efficient, and responsive urban management experience.
     </p>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-lg">
-        <h3 class="text-xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300">Our Mission</h3>
-        <p class="text-sm">To leverage technology and civic engagement to build smarter, more sustainable cities.</p>
+
+    <!-- Mission + Features + Team Summary Cards -->
+    <div class="grid md:grid-cols-3 gap-10 mb-24">
+      <div class="p-8 rounded-3xl bg-white dark:bg-gray-800 shadow-lg fade-in-up delay-100 transition-transform hover:scale-105 cursor-default">
+        <h3 class="text-2xl font-semibold mb-4 text-indigo-600 dark:text-indigo-300 tracking-wide">Our Mission</h3>
+        <p class="text-md text-gray-700 dark:text-gray-400 leading-relaxed">To leverage technology and civic engagement to build smarter, more sustainable cities.</p>
       </div>
-      <div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-lg">
-        <h3 class="text-xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300">Key Features</h3>
-        <ul class="list-disc list-inside text-sm space-y-1">
+
+      <div class="p-8 rounded-3xl bg-white dark:bg-gray-800 shadow-lg fade-in-up delay-200 transition-transform hover:scale-105 cursor-default">
+        <h3 class="text-2xl font-semibold mb-4 text-indigo-600 dark:text-indigo-300 tracking-wide">Key Features</h3>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-400 space-y-2 text-md">
           <li>Smart Issue Reporting</li>
           <li>Real-Time Dashboards</li>
           <li>Interactive Community Features</li>
@@ -45,54 +76,79 @@
           <li>Dark/Light Mode</li>
         </ul>
       </div>
-      <div class="p-6 rounded-lg bg-white dark:bg-gray-800 shadow-lg">
-        <h3 class="text-xl font-semibold mb-2 text-indigo-600 dark:text-indigo-300">The Team</h3>
-        <p class="text-sm">We're a multidisciplinary team of developers, designers, and urban thinkers committed to enhancing civic life through technology.</p>
-      </div>
-    </div>
-    <section class="py-12 px-4 bg-white dark:bg-gray-900">
-  <h2 class="text-center text-3xl font-bold text-gray-900 dark:text-white mb-10">Meet Our Team</h2>
-  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-    <!-- Team Member Card -->
-    <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <img src="Aditya.jpg" alt="Aditya Kumar Sahoo" class="w-full h-64 object-cover">
-      <div class="p-4 text-center">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Aditya Kumar Sahoo</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">Front-end Developer</p>
+      <div class="p-8 rounded-3xl bg-white dark:bg-gray-800 shadow-lg fade-in-up delay-300 transition-transform hover:scale-105 cursor-default">
+        <h3 class="text-2xl font-semibold mb-4 text-indigo-600 dark:text-indigo-300 tracking-wide">The Team</h3>
+        <p class="text-md text-gray-700 dark:text-gray-400 leading-relaxed">
+          We're a multidisciplinary team of developers, designers, and urban thinkers committed to enhancing civic life through technology.
+        </p>
       </div>
     </div>
 
-    <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <img src="Saanvi.jpg" alt="Saanvi Pattnaik" class="w-full h-64 object-cover">
-      <div class="p-4 text-center">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Saanvi Pattnaik</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">UI/UX Designer</p>
+    <!-- Meet Our Team Section -->
+    <section class="py-16 px-6 bg-white dark:bg-gray-900 rounded-3xl shadow-2xl fade-in-up delay-400">
+      <h2 class="text-center text-4xl font-bold text-gray-900 dark:text-white mb-14 tracking-wide">Meet Our Team</h2>
+      <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+
+        <!-- Team Member Card -->
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md transition-transform duration-300 ease-in-out cursor-pointer">
+          <div class="relative overflow-hidden">
+            <img src="Aditya.jpg" alt="Aditya Kumar Sahoo" class="w-full h-72 object-cover transform transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+              <p class="text-sm text-gray-300">Front-end Developer passionate about crafting engaging user experiences and performant UI.</p>
+            </div>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">Aditya Kumar Sahoo</h3>
+            <p class="text-sm text-indigo-600 dark:text-indigo-400 font-semibold">Front-end Developer</p>
+          </div>
+        </div>
+
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md transition-transform duration-300 ease-in-out cursor-pointer">
+          <div class="relative overflow-hidden">
+            <img src="Saanvi.jpg" alt="Saanvi Pattnaik" class="w-full h-72 object-cover transform transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+              <p class="text-sm text-gray-300">Creative UI/UX Designer focused on intuitive and beautiful interfaces.</p>
+            </div>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">Saanvi Pattnaik</h3>
+            <p class="text-sm text-indigo-600 dark:text-indigo-400 font-semibold">UI/UX Designer</p>
+          </div>
+        </div>
+
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md transition-transform duration-300 ease-in-out cursor-pointer">
+          <div class="relative overflow-hidden">
+            <img src="Sushmita.jpg" alt="Sushmita GH" class="w-full h-72 object-cover transform transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+              <p class="text-sm text-gray-300">Back-end Developer specializing in scalable systems and APIs.</p>
+            </div>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">Sushmita GH</h3>
+            <p class="text-sm text-indigo-600 dark:text-indigo-400 font-semibold">Back-end Developer</p>
+          </div>
+        </div>
+
+        <div class="team-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md transition-transform duration-300 ease-in-out cursor-pointer">
+          <div class="relative overflow-hidden">
+            <img src="Dhiroj.jpg" alt="Dhiroj Nayak" class="w-full h-72 object-cover transform transition-transform duration-500 hover:scale-110" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
+              <p class="text-sm text-gray-300">AI Specialist building smart, responsive chatbots and intelligent features.</p>
+            </div>
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-1">Dhiroj Nayak</h3>
+            <p class="text-sm text-indigo-600 dark:text-indigo-400 font-semibold">AI Specialist</p>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <img src="Sushmita.jpg" alt="Sushmita GH" class="w-full h-64 object-cover">
-      <div class="p-4 text-center">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Sushmita GH</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">Back-end Developer</p>
-      </div>
-    </div>
-
-    <div class="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transform hover:-translate-y-1 transition duration-300">
-      <img src="Dhiroj.jpg" alt="Dhiroj Nayak" class="w-full h-64 object-cover">
-      <div class="p-4 text-center">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Dhiroj Nayak</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">Back-end Developer</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-    <div class="mt-10 text-center">
-      <a href="submit.html" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-lg shadow transition">Submit an Issue</a>
-    </div>
+    </section>
   </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 mt-20 text-gray-600 dark:text-gray-400 select-none">
+    &copy; 2025 FixCity AI. All rights reserved.
+  </footer>
 </body>
 </html>
