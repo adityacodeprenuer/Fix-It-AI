@@ -1,20 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FixCity AI – Blog & Insights</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease-out both;
+    }
+  </style>
 </head>
 <body class="bg-gradient-to-r from-sky-50 to-blue-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+
   <!-- Header Navigation -->
   <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 shadow px-6 py-4 backdrop-blur flex justify-between items-center">
     <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">FixCity AI</h1>
-    <nav class="space-x-4">
+    <nav class="space-x-4 text-sm sm:text-base font-medium">
       <a href="index.html" class="hover:underline">Home</a>
       <a href="dashboard.html" class="hover:underline">Dashboard</a>
       <a href="submit.html" class="hover:underline">Submit</a>
-      <a href="blog.html" class="hover:underline">Blog</a>
+      <a href="blog.html" class="font-semibold text-indigo-600 dark:text-indigo-400 underline">Blog</a>
       <a href="community.html" class="hover:underline">Community</a>
       <a href="features.html" class="hover:underline">Features</a>
       <a href="AIchatbot.html" class="hover:underline">Chatbot AI</a>
@@ -25,38 +35,42 @@
     </nav>
   </header>
 
-  <main class="max-w-6xl mx-auto py-12 px-6">
-    <h2 class="text-4xl font-bold mb-8 text-center text-indigo-600 dark:text-indigo-400">Blog & Insights</h2>
-    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      <article class="bg-white dark:bg-gray-900 shadow-lg rounded-lg overflow-hidden transition transform hover:scale-105">
+  <!-- Blog Section -->
+  <main class="max-w-6xl mx-auto py-14 px-6">
+    <h2 class="text-4xl font-bold mb-12 text-center text-indigo-600 dark:text-indigo-400 fade-in-up">Blog & Insights</h2>
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 fade-in-up">
+      <!-- Blog Card 1 -->
+      <article class="bg-white dark:bg-gray-900 shadow-xl rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
         <img src="blog1.png" alt="Smart Cities" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Building Smarter Cities with AI</h3>
+        <div class="p-5">
+          <h3 class="text-xl font-bold mb-2">Building Smarter Cities with AI</h3>
           <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">Discover how artificial intelligence is transforming urban landscapes for the better.</p>
-          <a href="#" class="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">Read More →</a>
+          <a href="#" class="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">Read More →</a>
         </div>
       </article>
-      <article class="bg-white dark:bg-gray-900 shadow-lg rounded-lg overflow-hidden transition transform hover:scale-105">
+      <!-- Blog Card 2 -->
+      <article class="bg-white dark:bg-gray-900 shadow-xl rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
         <img src="blog2.png" alt="Infrastructure Monitoring" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Real-Time Infrastructure Monitoring</h3>
+        <div class="p-5">
+          <h3 class="text-xl font-bold mb-2">Real-Time Infrastructure Monitoring</h3>
           <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">Learn how real-time data is reshaping the way we maintain infrastructure.</p>
-          <a href="#" class="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">Read More →</a>
+          <a href="#" class="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">Read More →</a>
         </div>
       </article>
-      <article class="bg-white dark:bg-gray-900 shadow-lg rounded-lg overflow-hidden transition transform hover:scale-105">
+      <!-- Blog Card 3 -->
+      <article class="bg-white dark:bg-gray-900 shadow-xl rounded-xl overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
         <img src="blog3.jpeg" alt="Civic Engagement" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <h3 class="text-xl font-semibold mb-2">Civic Engagement in the Digital Age</h3>
+        <div class="p-5">
+          <h3 class="text-xl font-bold mb-2">Civic Engagement in the Digital Age</h3>
           <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">Understand the tools empowering citizens to shape their cities like never before.</p>
-          <a href="#" class="text-indigo-600 dark:text-indigo-400 font-medium hover:underline">Read More →</a>
+          <a href="#" class="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">Read More →</a>
         </div>
       </article>
     </div>
   </main>
 
-  <!-- Chatbot Placeholder -->
-  <button id="chatbotToggle" class="fixed bottom-6 right-6 bg-white dark:bg-gray-700 p-3 rounded-full shadow-lg backdrop-blur z-50">💬</button>
+  <!-- Floating Chatbot -->
+  <button id="chatbotToggle" class="fixed bottom-6 right-6 bg-white dark:bg-gray-700 p-3 rounded-full shadow-lg backdrop-blur z-50 text-xl">💬</button>
   <div id="chatbotWindow" class="fixed bottom-20 right-6 w-72 max-h-[60vh] overflow-y-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hidden z-50">
     <h3 class="text-lg font-bold mb-2">FixCity AI Assistant</h3>
     <div id="chatLog" class="space-y-2 text-sm max-h-40 overflow-y-auto"></div>

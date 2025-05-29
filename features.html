@@ -2,68 +2,238 @@
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FixCity AI – Features</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg-light: #f0f4ff;
+      --bg-dark: #1e1e2f;
+      --text-light: #000;
+      --text-dark: #fff;
+      --card-light: #ffffff;
+      --card-dark: #2c2c3a;
+      --accent: #6366f1;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, var(--bg-light), #dbeafe);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+
+    .dark body {
+      background: linear-gradient(to bottom right, var(--bg-dark), #111827);
+      color: var(--text-dark);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .dark header {
+      background-color: rgba(30, 30, 47, 0.95);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent);
+    }
+
+    nav a {
+      margin: 0 0.6rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: inherit;
+      transition: color 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .features {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--accent);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .feature-card {
+      background-color: var(--card-light);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .dark .feature-card {
+      background-color: var(--card-dark);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .feature-card h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    .feature-card p {
+      margin-top: 0.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Chatbot */
+    #chatbotToggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--card-light);
+      border: none;
+      padding: 0.8rem 1rem;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .dark #chatbotToggle {
+      background: var(--card-dark);
+    }
+
+    #chatbotWindow {
+      position: fixed;
+      bottom: 6rem;
+      right: 1.5rem;
+      width: 300px;
+      max-height: 60vh;
+      overflow-y: auto;
+      background: var(--card-light);
+      padding: 1rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+      display: none;
+      z-index: 1000;
+    }
+
+    .dark #chatbotWindow {
+      background: var(--card-dark);
+    }
+
+    #chatLog {
+      font-size: 0.9rem;
+      max-height: 150px;
+      overflow-y: auto;
+      margin-bottom: 0.5rem;
+    }
+
+    #chatInput {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+
+    .dark #chatInput {
+      background-color: #3a3a50;
+      border-color: #555;
+      color: white;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-sky-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+<body>
   <!-- Header Navigation -->
-  <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 shadow px-6 py-4 backdrop-blur flex justify-between items-center">
-    <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">FixCity AI</h1>
-    <nav class="space-x-4">
-      <a href="index.html" class="hover:underline">Home</a>
-      <a href="dashboard.html" class="hover:underline">Dashboard</a>
-      <a href="submit.html" class="hover:underline">Submit</a>
-      <a href="blog.html" class="hover:underline">Blog</a>
-      <a href="community.html" class="hover:underline">Community</a>
-      <a href="features.html" class="hover:underline font-semibold text-indigo-600 dark:text-indigo-400">Features</a>
-      <a href="AIchatbot.html" class="hover:underline">Chatbot AI</a>
-      <a href="about.html" class="hover:underline">About</a>
-      <a href="terms.html" class="hover:underline">Terms</a>
-      <a href="login.html" class="hover:underline">Login</a>
-      <a href="signup.html" class="hover:underline">Sign UP</a>
+  <header>
+    <h1 class="logo">FixCity AI</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="submit.html">Submit</a>
+      <a href="blog.html">Blog</a>
+      <a href="community.html">Community</a>
+      <a href="features.html" class="active">Features</a>
+      <a href="AIchatbot.html">Chatbot AI</a>
+      <a href="about.html">About</a>
+      <a href="terms.html">Terms</a>
+      <a href="login.html">Login</a>
+      <a href="signup.html">Sign UP</a>
     </nav>
   </header>
 
   <!-- Features Section -->
-  <section class="max-w-7xl mx-auto py-16 px-6">
-    <h2 class="text-4xl font-bold text-center mb-12 text-indigo-600 dark:text-indigo-400">Key Features of FixCity AI</h2>
-    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-      <a href="dashboard.html" class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition block">
-        <h3 class="text-2xl font-semibold mb-4">Real-Time Infrastructure Dashboard</h3>
+  <section class="features">
+    <h2>Key Features of FixCity AI</h2>
+    <div class="features-grid">
+      <a href="dashboard.html" class="feature-card">
+        <h3>Real-Time Infrastructure Dashboard</h3>
         <p>Visualize project statuses (ongoing, completed, planned) in real-time using interactive maps and cards.</p>
       </a>
-      <a href="#" class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition block">
-        <h3 class="text-2xl font-semibold mb-4">AI-Powered Chatbot</h3>
+      <a href="#" class="feature-card">
+        <h3>AI-Powered Chatbot</h3>
         <p>Engage users with a floating AI assistant capable of answering queries and guiding them across the platform.</p>
       </a>
-      <a href="submit.html" class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition block">
-        <h3 class="text-2xl font-semibold mb-4">Smart Submission System</h3>
+      <a href="submit.html" class="feature-card">
+        <h3>Smart Submission System</h3>
         <p>Allow users to report issues with location, images, and descriptions. Submissions update the dashboard instantly.</p>
       </a>
-      <a href="community.html" class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition block">
-        <h3 class="text-2xl font-semibold mb-4">Community Polls & Recognition</h3>
+      <a href="community.html" class="feature-card">
+        <h3>Community Polls & Recognition</h3>
         <p>Gather public opinions through polls and display top contributors on a live leaderboard.</p>
       </a>
-      <a href="blog.html" class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-xl hover:shadow-2xl transition block">
-        <h3 class="text-2xl font-semibold mb-4">Insights Blog</h3>
+      <a href="blog.html" class="feature-card">
+        <h3>Insights Blog</h3>
         <p>Keep citizens informed with articles, updates, and educational content about smart infrastructure and AI tech.</p>
       </a>
     </div>
   </section>
 
   <!-- Chatbot -->
-  <button id="chatbotToggle" class="fixed bottom-6 right-6 bg-white dark:bg-gray-700 p-3 rounded-full shadow-lg backdrop-blur z-50">💬</button>
-  <div id="chatbotWindow" class="fixed bottom-20 right-6 w-72 max-h-[60vh] overflow-y-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hidden z-50">
-    <h3 class="text-lg font-bold mb-2">FixCity AI Assistant</h3>
-    <div id="chatLog" class="space-y-2 text-sm max-h-40 overflow-y-auto"></div>
-    <input type="text" id="chatInput" placeholder="Type a message..." class="w-full px-3 py-2 mt-2 border rounded-md dark:bg-gray-700 dark:border-gray-600">
+  <button id="chatbotToggle">💬</button>
+  <div id="chatbotWindow">
+    <h3 style="margin: 0 0 0.5rem 0;">FixCity AI Assistant</h3>
+    <div id="chatLog"></div>
+    <input type="text" id="chatInput" placeholder="Type a message..." />
   </div>
 
   <script>
     const chatbotToggle = document.getElementById('chatbotToggle');
     const chatbotWindow = document.getElementById('chatbotWindow');
-    chatbotToggle.onclick = () => chatbotWindow.classList.toggle('hidden');
+    chatbotToggle.onclick = () => chatbotWindow.style.display =
+      chatbotWindow.style.display === 'block' ? 'none' : 'block';
 
     const chatInput = document.getElementById('chatInput');
     const chatLog = document.getElementById('chatLog');
@@ -71,7 +241,7 @@
       if (e.key === 'Enter' && chatInput.value.trim()) {
         const msg = chatInput.value;
         chatLog.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
-        chatLog.innerHTML += `<div><strong>Bot:</strong> I'll find that info for you.</div>`;
+        chatLog.innerHTML += `<div><strong>Bot:</strong> I'm working on it!</div>`;
         chatInput.value = '';
         chatLog.scrollTop = chatLog.scrollHeight;
       }
