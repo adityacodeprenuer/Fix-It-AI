@@ -2,32 +2,23 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Community – FixCity AI</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <style>
-    .nav-box {
-      @apply px-4 py-2 rounded-md bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 transition-all duration-300 shadow hover:shadow-xl hover:bg-indigo-100 dark:hover:bg-indigo-900 hover:scale-105;
-    }
-    .card {
-      @apply transition-all duration-300 transform hover:scale-[1.015] hover:shadow-xl;
-    }
-  </style>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
-<body class="bg-gradient-to-br from-purple-50 via-indigo-100 to-blue-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white font-sans">
+<body class="bg-gradient-to-br from-purple-50 via-indigo-100 to-blue-50 text-gray-900 font-sans">
   
   <!-- Navbar -->
-  <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 shadow px-6 py-4 backdrop-blur flex justify-between items-center">
-    <h1 class="text-xl sm:text-2xl font-bold text-indigo-700 dark:text-indigo-300">FixCity AI – Community</h1>
+  <header class="sticky top-0 z-50 bg-white/90 shadow px-6 py-4 backdrop-blur flex justify-between items-center">
+    <h1 class="text-xl sm:text-2xl font-bold text-indigo-700">FixCity AI – Community</h1>
     <nav class="flex gap-3 flex-wrap text-sm sm:text-base">
-      <a href="index.html" class="nav-box">Home</a>
-      <a href="submit.html" class="nav-box">Submit</a>
-      <a href="dashboard.html" class="nav-box">Dashboard</a>
-      <a href="AIchatbot.html" class="nav-box">Chatbot AI</a>
-      <a href="signup.html" class="nav-box">Sign UP</a>
+      <a href="index.html" class="px-4 py-2 rounded-md bg-white border border-gray-300 transition-all duration-300 shadow hover:shadow-xl hover:bg-indigo-100 hover:scale-105">Home</a>
+      <a href="submit.html" class="px-4 py-2 rounded-md bg-white border border-gray-300 transition-all duration-300 shadow hover:shadow-xl hover:bg-indigo-100 hover:scale-105">Submit</a>
+      <a href="dashboard.html" class="px-4 py-2 rounded-md bg-white border border-gray-300 transition-all duration-300 shadow hover:shadow-xl hover:bg-indigo-100 hover:scale-105">Dashboard</a>
+      <a href="AIchatbot.html" class="px-4 py-2 rounded-md bg-white border border-gray-300 transition-all duration-300 shadow hover:shadow-xl hover:bg-indigo-100 hover:scale-105">Chatbot AI</a>
+      <a href="signup.html" class="px-4 py-2 rounded-md bg-white border border-gray-300 transition-all duration-300 shadow hover:shadow-xl hover:bg-indigo-100 hover:scale-105">Sign UP</a>
     </nav>
   </header>
 
@@ -35,7 +26,7 @@
   <main class="max-w-6xl mx-auto px-4 py-10 sm:py-16 space-y-16">
     
     <!-- Poll Section -->
-    <section class="bg-white dark:bg-gray-800 p-6 rounded-xl card" data-aos="fade-up">
+    <section class="bg-white p-6 rounded-xl transition-all duration-300 transform hover:scale-[1.015] hover:shadow-xl" data-aos="fade-up">
       <h2 class="text-xl sm:text-2xl font-semibold mb-4">Vote on City Improvement Priorities</h2>
       <form id="pollForm" class="space-y-4">
         <label class="block"><input type="radio" name="poll" value="Road Maintenance" class="mr-2"> Road Maintenance</label>
@@ -47,21 +38,21 @@
     </section>
 
     <!-- Feedback Section -->
-    <section class="bg-white dark:bg-gray-800 p-6 rounded-xl card" data-aos="fade-up" data-aos-delay="100">
+    <section class="bg-white p-6 rounded-xl transition-all duration-300 transform hover:scale-[1.015] hover:shadow-xl" data-aos="fade-up" data-aos-delay="100">
       <h2 class="text-xl sm:text-2xl font-semibold mb-4">Submit Your Ideas</h2>
-      <textarea id="feedbackText" rows="4" class="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white resize-none" placeholder="Your suggestion..."></textarea>
+      <textarea id="feedbackText" rows="4" class="w-full p-3 rounded-lg border border-gray-300 bg-gray-50 text-gray-900 resize-none" placeholder="Your suggestion..."></textarea>
       <button id="submitFeedback" class="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition">Send Feedback</button>
       <p id="feedbackMessage" class="text-green-600 mt-2 hidden">Feedback submitted! 🎉</p>
     </section>
 
     <!-- Suggestions -->
-    <section class="bg-white dark:bg-gray-800 p-6 rounded-xl card" data-aos="fade-up" data-aos-delay="200">
+    <section class="bg-white p-6 rounded-xl transition-all duration-300 transform hover:scale-[1.015] hover:shadow-xl" data-aos="fade-up" data-aos-delay="200">
       <h2 class="text-xl sm:text-2xl font-semibold mb-4">Recent Suggestions</h2>
-      <ul id="suggestionList" class="list-disc list-inside space-y-2 text-sm text-gray-800 dark:text-gray-200"></ul>
+      <ul id="suggestionList" class="list-disc list-inside space-y-2 text-sm text-gray-800"></ul>
     </section>
 
     <!-- Recognition -->
-    <section class="bg-white dark:bg-gray-800 p-6 rounded-xl card" data-aos="fade-up" data-aos-delay="300">
+    <section class="bg-white p-6 rounded-xl transition-all duration-300 transform hover:scale-[1.015] hover:shadow-xl" data-aos="fade-up" data-aos-delay="300">
       <h2 class="text-xl sm:text-2xl font-semibold mb-4">Community Recognition <button onclick="toggleBadgeInfo()" class="ml-2 text-indigo-500 underline text-sm">What's this?</button></h2>
       <ul class="space-y-2">
         <li class="flex justify-between items-center">
@@ -76,7 +67,7 @@
     </section>
 
     <!-- Stats -->
-    <section class="bg-white dark:bg-gray-800 p-6 rounded-xl card" data-aos="fade-up" data-aos-delay="400">
+    <section class="bg-white p-6 rounded-xl transition-all duration-300 transform hover:scale-[1.015] hover:shadow-xl" data-aos="fade-up" data-aos-delay="400">
       <h2 class="text-xl sm:text-2xl font-semibold mb-4">Community Engagement Stats</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-5 rounded-lg shadow-md">
@@ -91,9 +82,9 @@
     </section>
 
     <!-- Progress -->
-    <section class="bg-white dark:bg-gray-800 p-6 rounded-xl card" data-aos="fade-up" data-aos-delay="500">
+    <section class="bg-white p-6 rounded-xl transition-all duration-300 transform hover:scale-[1.015] hover:shadow-xl" data-aos="fade-up" data-aos-delay="500">
       <h2 class="text-xl sm:text-2xl font-semibold mb-4">Overall Engagement</h2>
-      <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-6 overflow-hidden">
+      <div class="w-full bg-gray-200 rounded-full h-6 overflow-hidden">
         <div id="engagementBar" class="bg-indigo-600 h-full transition-all duration-700 text-sm text-white text-center">0%</div>
       </div>
     </section>
@@ -102,77 +93,72 @@
 
   <!-- Modal -->
   <div id="badgeModal" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50">
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-xl max-w-sm text-center">
+    <div class="bg-white p-6 rounded-xl max-w-sm text-center">
       <h3 class="text-lg font-bold mb-4">Badge Info</h3>
       <p><strong>Top Contributor 🌟:</strong> Most helpful user based on votes.</p>
       <p><strong>Early Reporter 🕒:</strong> Reports bugs/issues first.</p>
-      <button onclick="toggleBadgeInfo()" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg">Got it</button>
+      <button onclick="toggleBadgeInfo()" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">Close</button>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="text-center py-8 text-sm opacity-75">
-    FixCity AI Community – Collaborate to Innovate.
-  </footer>
-
-  <!-- JavaScript -->
   <script>
+    // Toggle badge info modal
+    function toggleBadgeInfo() {
+      const modal = document.getElementById('badgeModal');
+      modal.classList.toggle('hidden');
+      modal.classList.toggle('flex');
+    }
+
+    // Poll form submission
     const pollForm = document.getElementById('pollForm');
     const pollMessage = document.getElementById('pollMessage');
-    const votesCount = document.getElementById('votesCount');
-    const ideasCount = document.getElementById('ideasCount');
-    const feedbackText = document.getElementById('feedbackText');
-    const feedbackBtn = document.getElementById('submitFeedback');
-    const feedbackMessage = document.getElementById('feedbackMessage');
-    const suggestionList = document.getElementById('suggestionList');
-    const engagementBar = document.getElementById('engagementBar');
-
-    function toggleBadgeInfo() {
-      document.getElementById('badgeModal').classList.toggle('hidden');
-      document.getElementById('badgeModal').classList.toggle('flex');
-    }
-
-    function updateEngagementBar() {
-      const total = (parseInt(localStorage.getItem('community_ideas') || 0)) + (parseInt(localStorage.getItem('community_votes') || 0));
-      const percent = Math.min(Math.floor(total / 2), 100);
-      engagementBar.style.width = percent + '%';
-      engagementBar.textContent = percent + '%';
-    }
-
+    let votesCount = 0;
     pollForm.addEventListener('submit', e => {
       e.preventDefault();
+      const selected = pollForm.poll.value;
+      if (!selected) return alert('Please select an option!');
+      votesCount++;
+      document.getElementById('votesCount').textContent = votesCount;
       pollMessage.classList.remove('hidden');
-      localStorage.setItem('community_votes', parseInt(localStorage.getItem('community_votes') || 0) + 1);
-      votesCount.textContent = localStorage.getItem('community_votes');
-      updateEngagementBar();
+      pollForm.reset();
+      updateEngagement();
     });
 
-    feedbackBtn.addEventListener('click', () => {
-      const feedback = feedbackText.value.trim();
-      if (feedback !== '') {
-        feedbackMessage.classList.remove('hidden');
-        const ideas = JSON.parse(localStorage.getItem('feedback_list') || '[]');
-        ideas.unshift(feedback);
-        localStorage.setItem('feedback_list', JSON.stringify(ideas.slice(0, 5)));
-        localStorage.setItem('community_ideas', parseInt(localStorage.getItem('community_ideas') || 0) + 1);
-        ideasCount.textContent = localStorage.getItem('community_ideas');
-        feedbackText.value = '';
-        renderSuggestions();
-        updateEngagementBar();
-      }
+    // Feedback submission
+    const submitFeedbackBtn = document.getElementById('submitFeedback');
+    const feedbackText = document.getElementById('feedbackText');
+    const feedbackMessage = document.getElementById('feedbackMessage');
+    const suggestionList = document.getElementById('suggestionList');
+    let ideasCount = 0;
+    submitFeedbackBtn.addEventListener('click', () => {
+      const text = feedbackText.value.trim();
+      if (text.length === 0) return alert('Please enter your suggestion.');
+      ideasCount++;
+      document.getElementById('ideasCount').textContent = ideasCount;
+      const li = document.createElement('li');
+      li.textContent = text;
+      suggestionList.prepend(li);
+      feedbackText.value = '';
+      feedbackMessage.classList.remove('hidden');
+      setTimeout(() => feedbackMessage.classList.add('hidden'), 3000);
+      updateEngagement();
     });
 
-    function renderSuggestions() {
-      const ideas = JSON.parse(localStorage.getItem('feedback_list') || '[]');
-      suggestionList.innerHTML = ideas.map(idea => `<li>${idea}</li>`).join('');
+    // Update overall engagement bar
+    function updateEngagement() {
+      const total = ideasCount + votesCount;
+      const max = 50; // example max engagement
+      const percent = Math.min(100, Math.round((total / max) * 100));
+      const bar = document.getElementById('engagementBar');
+      bar.style.width = percent + '%';
+      bar.textContent = percent + '%';
     }
 
-    votesCount.textContent = localStorage.getItem('community_votes') || 0;
-    ideasCount.textContent = localStorage.getItem('community_ideas') || 0;
-    renderSuggestions();
-    updateEngagementBar();
-
-    AOS.init();
+    // Initialize AOS animations
+    document.addEventListener('DOMContentLoaded', () => {
+      if (AOS) AOS.init({ duration: 800, once: true });
+    });
   </script>
+
 </body>
 </html>
