@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixCity AI – Chatbot</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-tr from-indigo-50 to-sky-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+  <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 shadow px-6 py-4 backdrop-blur flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">FixCity AI</h1>
+    <nav class="space-x-4">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="features.html" class="hover:underline">Features</a>
+      <a href="dashboard.html" class="hover:underline">Dashboard</a>
+      <a href="submit.html" class="hover:underline">Submit</a>
+      <a href="community.html" class="hover:underline">Community</a>
+      <a href="signup.html" class="hover:underline">Sign UP</a>
+    </nav>
+  </header>
+
+  <main class="flex flex-col items-center justify-center min-h-screen py-16 px-4">
+    <div class="w-full max-w-md bg-white dark:bg-gray-900 rounded-xl shadow-lg p-6">
+      <h2 class="text-2xl font-bold mb-4 text-center text-indigo-600 dark:text-indigo-400">FixCity AI Assistant</h2>
+      <div id="chatLog" class="space-y-3 max-h-96 overflow-y-auto text-sm bg-gray-100 dark:bg-gray-800 p-3 rounded-md mb-4"></div>
+      <input type="text" id="chatInput" placeholder="Type your question..."
+        class="w-full px-4 py-2 border rounded-lg dark:bg-gray-700 dark:border-gray-600" />
+    </div>
+  </main>
+
+  <script>
+    const chatLog = document.getElementById('chatLog');
+    const chatInput = document.getElementById('chatInput');
+
+    chatInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && chatInput.value.trim()) {
+        const userMsg = chatInput.value;
+        const botResponse = getBotResponse(userMsg);
+        chatLog.innerHTML += `<div><strong>You:</strong> ${userMsg}</div>`;
+        chatLog.innerHTML += `<div><strong>Bot:</strong> ${botResponse}</div>`;
+        chatInput.value = '';
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+    });
+
+    function getBotResponse(input) {
+      input = input.toLowerCase();
+      if (input.includes("report")) return "You can report issues on the Submit page.";
+      if (input.includes("status")) return "Check the Dashboard for live status updates.";
+      if (input.includes("community")) return "Visit the Community page to engage with others.";
+      if (input.includes("help")) return "I'm here to assist! Try asking about reporting, status, or community.";
+      if (input.includes("hi")) return "I'm here to assist! Try asking about reporting, status, or community.";
+      if (input.includes("pothole")) return "To report a pothole, head to the Submit page and upload location details.";
+      if (input.includes("street light")) return "You can report broken street lights via the Submit section.";
+      if (input.includes("garbage")) return "Sanitation concerns? Use the Submit page to notify city services.";
+      if (input.includes("project status")) return "Visit the Dashboard to view current infrastructure project statuses.";
+      if (input.includes("completed projects")) return "Check the Dashboard's 'Completed' section for past improvements.";
+      if (input.includes("planned upgrades")) return "Our 'Planned' tab in the Dashboard shows future development plans.";
+      if (input.includes("polls") || input.includes("vote")) return "Join polls and give your opinion in the Community page.";
+      if (input.includes("leaderboard")) return "Check out our leaderboard in the Community section to see top contributors!";
+      if (input.includes("how to use")) return "Each page has a purpose! Try starting at the Features page to explore.";
+      if (input.includes("navigate") || input.includes("where is")) return "Use the top menu to navigate to any section quickly.";
+      if (input.includes("login") || input.includes("sign in")) return "Click Login in the top right corner to sign in.";
+      if (input.includes("suggestion") || input.includes("idea")) return "We’d love your ideas! Submit them on the Community page.";
+
+ 
+ 
+ 
+    }
+  </script>
+</body>
+</html>

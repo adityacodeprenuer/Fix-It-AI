@@ -1,0 +1,102 @@
+<!-- INDEX.HTML (advanced homepage) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FixCity AI – Smart Infrastructure Tracker</title>
+  <link href="style.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-sky-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 shadow px-6 py-4 backdrop-blur flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">FixCity AI</h1>
+    <nav class="space-x-4">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="dashboard.html" class="hover:underline">Dashboard</a>
+      <a href="submit.html" class="hover:underline">Submit</a>
+      <a href="blog.html" class="hover:underline">Blog</a>
+      <a href="community.html" class="hover:underline">Community</a>
+      <a href="features.html" class="hover:underline">Features</a>
+      <a href="AIchatbot.html" class="hover:underline">Chatbot AI</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="terms.html" class="hover:underline">Terms</a>
+      <a href="login.html" class="hover:underline">Login</a>
+      <a href="signup.html" class="hover:underline">Sign UP</a>
+    </nav>
+    <button id="toggleMode" class="ml-4 px-3 py-1 rounded-full bg-gray-200 dark:bg-gray-700 text-sm">Toggle Mode</button>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-6">
+    <h2 class="text-4xl md:text-6xl font-bold leading-tight mb-6">Empowering Smarter Cities with <span class="text-indigo-600 dark:text-indigo-400">AI</span></h2>
+    <p class="max-w-xl text-lg mb-8">Track, Report, and Engage in the Transformation of Urban Infrastructure.</p>
+    <a href="features.html" class="bg-indigo-600 text-white px-6 py-3 rounded-full hover:bg-indigo-700 transition-all duration-300">Explore Features</a>
+    <!-- Optional: Add Lottie or SVG/GSAP animation here -->
+    <div class="absolute bottom-10 animate-bounce text-2xl text-gray-400">↓</div>
+  </section>
+
+ 
+ 
+
+  <!-- Floating Chatbot Button -->
+  <button id="chatbotToggle" class="fixed bottom-6 right-6 bg-white dark:bg-gray-700 p-3 rounded-full shadow-lg backdrop-blur z-50">
+    💬
+  </button>
+  <div id="chatbotWindow" class="fixed bottom-20 right-6 w-72 max-h-[60vh] overflow-y-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 hidden z-50">
+    <h3 class="text-lg font-bold mb-2">FixCity AI Assistant</h3>
+    <div id="chatLog" class="space-y-2 text-sm max-h-40 overflow-y-auto"></div>
+    <input type="text" id="chatInput" placeholder="Type a message..." class="w-full px-3 py-2 mt-2 border rounded-md dark:bg-gray-700 dark:border-gray-600">
+  </div>
+
+  <script>
+    document.getElementById('toggleMode').onclick = () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('mode', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem('mode') === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    }
+
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotWindow = document.getElementById('chatbotWindow');
+    chatbotToggle.onclick = () => chatbotWindow.classList.toggle('hidden');
+
+    const chatInput = document.getElementById('chatInput');
+    const chatLog = document.getElementById('chatLog');
+    chatInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && chatInput.value.trim()) {
+        const msg = chatInput.value;
+        chatLog.innerHTML += `<div><strong>You:</strong> ${msg}</div>`;
+        chatLog.innerHTML += `<div><strong>Bot:</strong> Working on it...</div>`;
+        chatInput.value = '';
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }
+    });
+  </script>
+
+  <style>
+    .card-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 150px;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+      font-size: 1.25rem;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+    .card-link:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #a5b4fc, #7dd3fc);
+    }
+  </style>
+</body>
+</html>

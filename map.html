@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixItNow - Report an Issue</title>
+  
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-sA+z0pJ3J++bxVbCrvytxLMqM2B2B3k5h5+ffo+EFeE="
+    crossorigin=""
+  />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f2f5;
+      color: #333;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background-color: #111;
+      color: #fff;
+      padding: 1rem 2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      animation: slideDown 0.6s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    #map {
+      flex: 1;
+      width: 100%;
+      height: 60vh;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 1rem auto;
+      border-radius: 12px;
+      animation: fadeUp 0.7s ease-in-out;
+    }
+
+    @keyframes fadeUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .form-container h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .form-container input,
+    .form-container textarea,
+    .form-container button {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .form-container button {
+      background-color: #111;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .form-container button:hover {
+      background-color: #333;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    FixItNow
+    <span>🚧 Report an Issue</span>
+  </header>
+
+  <div id="map"></div>
+
+  <div class="form-container">
+    <h2>Report an Issue</h2>
+    <form id="issueForm">
+      <label>Issue Title</label>
+      <input type="text" id="title" required />
+
+      <label>Description</label>
+      <textarea id="description" rows="4" required></textarea>
+
+      <label>Latitude</label>
+      <input type="text" id="lat" readonly />
+
+      <label>Longitude</label>
+      <input type="text" id="lng" readonly />
+
+      <button type="submit">Submit Report</button>
+    </form>
+  </div>
+
+  <footer>&copy; 2025 FixItNow. All rights reserved.</footer>
+
+  <!-- Leaflet JS -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1jv+E0RjePQ3o2DhKuU5NzeYijr2t1UwhzFqC1Bs="
+    crossorigin=""
+  ></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const map = L.map("map").setView([37.7749, -122.4194], 13); // San Francisco default
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors",
+      }).addTo(map);
+
+      let marker;
+
+      map.on("click", function (e) {
+        const { lat, lng } = e.latlng;
+        document.getElementById("lat").value = lat.toFixed(5);
+        document.getElementById("lng").value = lng.toFixed(5);
+
+        if (marker) {
+          marker.setLatLng(e.latlng);
+        } else {
+          marker = L.marker(e.latlng).addTo(map);
+        }
+      });
+
+      document.getElementById("issueForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const title = document.getElementById("title").value;
+        const desc = document.getElementById("description").value;
+        const lat = document.getElementById("lat").value;
+        const lng = document.getElementById("lng").value;
+
+        alert(`Issue Submitted!\n\nTitle: ${title}\nDescription: ${desc}\nLocation: ${lat}, ${lng}`);
+        this.reset();
+        if (marker) map.removeLayer(marker);
+        marker = null;
+      });
+    });
+  </script>
+</body>
+</html>

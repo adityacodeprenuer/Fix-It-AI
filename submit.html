@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixCity AI – Submit Report</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-xwE/HOIj5Jc3tE9gEuTZ6+ZUDopKzEI1WnUoEto3C3E="
+    crossorigin=""
+  />
+  <style>
+    #map {
+      height: 400px;
+      width: 100%;
+      border-radius: 0.5rem;
+      margin-top: 1rem;
+      animation: fadeIn 1s ease-in-out;
+      z-index: 1;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.98); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .leaflet-container {
+      z-index: 1 !important;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-tr from-indigo-50 to-sky-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-900/90 shadow px-6 py-4 backdrop-blur flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">FixCity AI</h1>
+    <nav class="space-x-4">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="features.html" class="hover:underline">Features</a>
+      <a href="dashboard.html" class="hover:underline">Dashboard</a>
+      <a href="submit.html" class="text-indigo-600 font-semibold dark:text-indigo-400 underline">Submit</a>
+      <a href="blog.html" class="hover:underline">Blog</a>
+      <a href="community.html" class="hover:underline">Community</a>
+      <a href="about.html" class="hover:underline">About</a>
+      <a href="terms.html" class="hover:underline">Terms</a>
+      <a href="login.html" class="hover:underline">Login</a>
+      <a href="signup.html" class="hover:underline">Sign UP</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-grow flex items-center justify-center p-6">
+    <div class="bg-white dark:bg-gray-900 shadow-xl rounded-2xl p-8 max-w-2xl w-full">
+      <h2 class="text-2xl font-bold mb-4 text-center text-gray-900 dark:text-white">🚧 Report an Issue</h2>
+
+      <form id="issueForm" class="space-y-4">
+        <div>
+          <label for="title" class="block text-sm font-medium mb-1">Issue Title</label>
+          <input type="text" id="title" required class="w-full px-4 py-2 rounded-md border dark:border-gray-600 bg-gray-50 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+        </div>
+
+        <div>
+          <label for="description" class="block text-sm font-medium mb-1">Description</label>
+          <textarea id="description" rows="3" required class="w-full px-4 py-2 rounded-md border dark:border-gray-600 bg-gray-50 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label for="lat" class="block text-sm font-medium mb-1">Latitude</label>
+            <input type="text" id="lat" readonly class="w-full px-4 py-2 rounded-md border bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+          </div>
+          <div>
+            <label for="lng" class="block text-sm font-medium mb-1">Longitude</label>
+            <input type="text" id="lng" readonly class="w-full px-4 py-2 rounded-md border bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+          </div>
+        </div>
+
+        <div id="map"></div>
+
+        <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-md transition duration-300">
+          Submit Report
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center text-sm text-gray-600 dark:text-gray-400 p-4">
+    &copy; 2025 FixItNow. All rights reserved.
+  </footer>
+
+  <!-- Leaflet -->
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-o9N1jv+E0RjePQ3o2DhKuU5NzeYijr2t1UwhzFqC1Bs="
+    crossorigin=""
+  ></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const map = L.map("map").setView([37.7749, -122.4194], 13);
+
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      }).addTo(map);
+
+      let marker;
+
+      map.on("click", function (e) {
+        const { lat, lng } = e.latlng;
+        document.getElementById("lat").value = lat.toFixed(5);
+        document.getElementById("lng").value = lng.toFixed(5);
+
+        if (marker) {
+          marker.setLatLng(e.latlng);
+        } else {
+          marker = L.marker(e.latlng).addTo(map);
+        }
+      });
+
+      document.getElementById("issueForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        const title = document.getElementById("title").value;
+        const desc = document.getElementById("description").value;
+        const lat = document.getElementById("lat").value;
+        const lng = document.getElementById("lng").value;
+
+        alert(`✅ Issue Submitted!\n\n📌 ${title}\n📝 ${desc}\n📍 Location: ${lat}, ${lng}`);
+        this.reset();
+        if (marker) map.removeLayer(marker);
+        marker = null;
+      });
+
+      // Resize fix in case container is hidden on load
+      setTimeout(() => {
+        map.invalidateSize();
+      }, 500);
+    });
+  </script>
+</body>
+</html>
