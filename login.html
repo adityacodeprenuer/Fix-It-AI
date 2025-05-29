@@ -1,28 +1,58 @@
-<!-- LOGIN.HTML -->
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login – FixCity AI</title>
-  <link href="style.css" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+  </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-purple-100 to-pink-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-gray-900 dark:text-white min-h-screen flex items-center justify-center">
-  <div class="w-full max-w-md p-8 bg-white dark:bg-gray-800 shadow-lg rounded-2xl">
-    <h2 class="text-3xl font-bold mb-6 text-center">Login to FixCity AI</h2>
-    <form class="space-y-4">
+
+  <div class="w-full max-w-md p-8 bg-white dark:bg-gray-800 shadow-2xl rounded-2xl animate-fadeIn">
+    <h2 class="text-3xl font-bold mb-6 text-center text-indigo-600 dark:text-indigo-400">Login to FixCity AI</h2>
+    
+    <form id="loginForm" class="space-y-5">
       <div>
-        <label class="block mb-1 text-sm font-medium">Email</label>
-        <input type="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white" required>
+        <label for="email" class="block mb-1 text-sm font-medium">Email</label>
+        <input type="email" id="email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
       </div>
       <div>
-        <label class="block mb-1 text-sm font-medium">Password</label>
-        <input type="password" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white" required>
+        <label for="password" class="block mb-1 text-sm font-medium">Password</label>
+        <input type="password" id="password" required class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-700 text-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500" />
       </div>
-      <button type="submit" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all">Login</button>
-      <p class="text-center text-sm mt-4 text-gray-600 dark:text-gray-400">Don't have an account? <a href="#" class="text-indigo-600 hover:underline">Sign up</a></p>
+      <button type="submit" class="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition duration-300">
+        Login
+      </button>
+      <p id="error" class="text-center text-sm mt-2 text-red-500 hidden">❌ Invalid email or password</p>
+      <p class="text-center text-sm mt-4 text-gray-600 dark:text-gray-400">
+        Don't have an account? <a href="#" class="text-indigo-600 hover:underline">Sign up</a>
+      </p>
     </form>
   </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      // Example credentials for demo (replace with backend logic later)
+      if (email === "admin@fixcity.com" && password === "1234") {
+        window.location.href = "home.html";
+      } else {
+        document.getElementById("error").classList.remove("hidden");
+      }
+    });
+  </script>
+
 </body>
 </html>
